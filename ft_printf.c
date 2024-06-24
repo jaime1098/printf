@@ -18,6 +18,7 @@ int	ft_flags(const char *text, va_list args)
 	int	n;
 
 	text++;
+	printf("%c\n", *text);
 	n = 1;
 	if (*text == 'c')
 		ft_isc(args);
@@ -54,6 +55,12 @@ int	ft_printf(const char *text, ...)
 		else if (ft_strchr("cspdiuxX%", *(text + 1)))
 		{
 			char_count += ft_flags(text, args);
+			text += 2;
+		}
+		else
+		{
+			ft_putchar_fd('%', 1);
+			char_count++;
 			text += 2;
 		}
 	}
